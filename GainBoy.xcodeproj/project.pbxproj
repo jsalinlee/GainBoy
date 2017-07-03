@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2843AC31F0AE5D20013C09E /* LogEntryInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */; };
+		B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */; };
 		B2AAB2471F06F907008D061B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2461F06F907008D061B /* AppDelegate.swift */; };
-		B2AAB2491F06F907008D061B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2481F06F907008D061B /* ViewController.swift */; };
 		B2AAB24C1F06F907008D061B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2AAB24A1F06F907008D061B /* Main.storyboard */; };
 		B2AAB24E1F06F907008D061B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2AAB24D1F06F907008D061B /* Assets.xcassets */; };
 		B2AAB2511F06F907008D061B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2AAB24F1F06F907008D061B /* LaunchScreen.storyboard */; };
 		B2AAB25C1F06F908008D061B /* GainBoyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB25B1F06F908008D061B /* GainBoyTests.swift */; };
 		B2AAB2671F06F908008D061B /* GainBoyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2661F06F908008D061B /* GainBoyUITests.swift */; };
+		B2AAB2751F06FA22008D061B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2741F06FA22008D061B /* MainMenuViewController.swift */; };
+		B2AAB2771F070EEE008D061B /* AdventureLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2761F070EEE008D061B /* AdventureLogViewController.swift */; };
+		B2AAB2791F0717ED008D061B /* LogEntryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2781F0717ED008D061B /* LogEntryInfoViewController.swift */; };
+		B2AAB27D1F071A6C008D061B /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB27C1F071A6C008D061B /* Adventure.swift */; };
+		B2AAB27F1F071C2F008D061B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB27E1F071C2F008D061B /* Exercise.swift */; };
+		B2AAB2811F072138008D061B /* AdventureLogDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */; };
+		B2B90B731F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoDataSource.swift; sourceTree = "<group>"; };
+		B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
 		B2AAB2431F06F907008D061B /* GainBoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GainBoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2AAB2461F06F907008D061B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B2AAB2481F06F907008D061B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B2AAB24B1F06F907008D061B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2AAB24D1F06F907008D061B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2AAB2501F06F907008D061B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +56,13 @@
 		B2AAB2621F06F908008D061B /* GainBoyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GainBoyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2AAB2661F06F908008D061B /* GainBoyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GainBoyUITests.swift; sourceTree = "<group>"; };
 		B2AAB2681F06F908008D061B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2AAB2741F06FA22008D061B /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		B2AAB2761F070EEE008D061B /* AdventureLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureLogViewController.swift; sourceTree = "<group>"; };
+		B2AAB2781F0717ED008D061B /* LogEntryInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoViewController.swift; sourceTree = "<group>"; };
+		B2AAB27C1F071A6C008D061B /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
+		B2AAB27E1F071C2F008D061B /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureLogDataSource.swift; sourceTree = "<group>"; };
+		B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +113,20 @@
 		B2AAB2451F06F907008D061B /* GainBoy */ = {
 			isa = PBXGroup;
 			children = (
+				B2AAB2521F06F907008D061B /* Info.plist */,
+				B2AAB27C1F071A6C008D061B /* Adventure.swift */,
+				B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */,
+				B2AAB2761F070EEE008D061B /* AdventureLogViewController.swift */,
 				B2AAB2461F06F907008D061B /* AppDelegate.swift */,
-				B2AAB2481F06F907008D061B /* ViewController.swift */,
-				B2AAB24A1F06F907008D061B /* Main.storyboard */,
+				B2AAB27E1F071C2F008D061B /* Exercise.swift */,
+				B2AAB2781F0717ED008D061B /* LogEntryInfoViewController.swift */,
+				B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */,
+				B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */,
+				B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */,
+				B2AAB2741F06FA22008D061B /* MainMenuViewController.swift */,
 				B2AAB24D1F06F907008D061B /* Assets.xcassets */,
 				B2AAB24F1F06F907008D061B /* LaunchScreen.storyboard */,
-				B2AAB2521F06F907008D061B /* Info.plist */,
+				B2AAB24A1F06F907008D061B /* Main.storyboard */,
 			);
 			path = GainBoy;
 			sourceTree = "<group>";
@@ -262,8 +286,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2AAB2491F06F907008D061B /* ViewController.swift in Sources */,
+				B2AAB2791F0717ED008D061B /* LogEntryInfoViewController.swift in Sources */,
+				B2AAB2751F06FA22008D061B /* MainMenuViewController.swift in Sources */,
+				B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */,
+				B2AAB2811F072138008D061B /* AdventureLogDataSource.swift in Sources */,
 				B2AAB2471F06F907008D061B /* AppDelegate.swift in Sources */,
+				B2AAB27D1F071A6C008D061B /* Adventure.swift in Sources */,
+				B2B90B731F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift in Sources */,
+				B2AAB27F1F071C2F008D061B /* Exercise.swift in Sources */,
+				B2843AC31F0AE5D20013C09E /* LogEntryInfoDataSource.swift in Sources */,
+				B2AAB2771F070EEE008D061B /* AdventureLogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +548,7 @@
 				B2AAB26D1F06F908008D061B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2AAB26E1F06F908008D061B /* Build configuration list for PBXNativeTarget "GainBoyTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +557,7 @@
 				B2AAB2701F06F908008D061B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2AAB2711F06F908008D061B /* Build configuration list for PBXNativeTarget "GainBoyUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +566,7 @@
 				B2AAB2731F06F908008D061B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
