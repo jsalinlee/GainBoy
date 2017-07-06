@@ -183,9 +183,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="njj-ie-aNU" kind="show" identifier="showLogEntry" id="rT6-G8-uXv"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -201,6 +198,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="njj-ie-aNU" kind="show" identifier="showLogEntry" id="JCX-LU-gMk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmc-mR-FTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -230,8 +230,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pWj-O1-D7u">
                                 <rect key="frame" x="8" y="216" width="359" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tuk-xC-xDg">
-                                    <rect key="frame" x="0.0" y="0.0" width="359" height="21"/>
+                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tuk-xC-xDg">
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                                     <nil key="textColor"/>
@@ -239,7 +239,7 @@
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="setTableViewCell" rowHeight="50" id="pZA-H5-W6Z" customClass="SetTableViewCell" customModule="GainBoy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49" width="359" height="50"/>
+                                        <rect key="frame" x="0.0" y="52" width="359" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pZA-H5-W6Z" id="cmb-s7-ek8">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="49.5"/>
@@ -279,7 +279,7 @@
                                                             <rect key="frame" x="278.5" y="0.0" width="64.5" height="49.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                             <connections>
                                                                 <outlet property="delegate" destination="vL2-wT-5Rj" id="NBY-Bd-Iv3"/>
                                                             </connections>
@@ -299,6 +299,29 @@
                                             <outlet property="setNumber" destination="CTJ-5e-bRt" id="4FI-SX-dlc"/>
                                             <outlet property="weightTextField" destination="QeV-DO-fLV" id="n2V-Bx-iAD"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addExerciseTableViewCell" id="DZI-Bh-ExR">
+                                        <rect key="frame" x="0.0" y="102" width="359" height="49"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DZI-Bh-ExR" id="Jh6-av-HT2">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="48.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Hi-iz-ugJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="48.5"/>
+                                                    <state key="normal" title="Add Exercise"/>
+                                                    <connections>
+                                                        <action selector="addExerciseButtonPressed:" destination="vL2-wT-5Rj" eventType="touchUpInside" id="aMo-6i-pqh"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="5Hi-iz-ugJ" secondAttribute="bottom" id="TVl-8f-Nkl"/>
+                                                <constraint firstItem="5Hi-iz-ugJ" firstAttribute="top" secondItem="Jh6-av-HT2" secondAttribute="top" id="gzm-fI-iYX"/>
+                                                <constraint firstAttribute="trailing" secondItem="5Hi-iz-ugJ" secondAttribute="trailing" id="p05-Gc-1EC"/>
+                                                <constraint firstItem="5Hi-iz-ugJ" firstAttribute="leading" secondItem="Jh6-av-HT2" secondAttribute="leading" id="tw7-le-CBA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -382,7 +405,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="vL2-wT-5Rj" id="Dvp-pI-apc"/>
                                 </connections>
@@ -455,6 +478,10 @@
                         <outlet property="timeTextField" destination="MsC-tZ-iAD" id="A1T-gp-t65"/>
                         <outlet property="titleTextField" destination="Hzf-mM-Fax" id="9ge-AH-VxD"/>
                         <outlet property="weightTextField" destination="1Uh-Zl-yVJ" id="3d5-eP-5Vh"/>
+                        <outletCollection property="allTextFields" destination="H8v-Fj-Agc" collectionClass="NSMutableArray" id="6ft-Qn-uZq"/>
+                        <outletCollection property="allTextFields" destination="MsC-tZ-iAD" collectionClass="NSMutableArray" id="2bY-Tk-leM"/>
+                        <outletCollection property="allTextFields" destination="1Uh-Zl-yVJ" collectionClass="NSMutableArray" id="s9x-nh-fYR"/>
+                        <outletCollection property="allTextFields" destination="lhO-dK-ayc" collectionClass="NSMutableArray" id="ZgX-qd-lnc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URk-Pv-xLZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -504,6 +531,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rT6-G8-uXv"/>
+        <segue reference="JCX-LU-gMk"/>
     </inferredMetricsTieBreakers>
 </document>

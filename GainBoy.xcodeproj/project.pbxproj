@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		B2843AC31F0AE5D20013C09E /* LogEntryInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */; };
 		B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */; };
+		B2843AC91F0EA34E0013C09E /* Kirbys-Adventure.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2843AC81F0EA34E0013C09E /* Kirbys-Adventure.ttf */; };
+		B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2843ACD1F0EA5B20013C09E /* Main.storyboard */; };
 		B2AAB2471F06F907008D061B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2461F06F907008D061B /* AppDelegate.swift */; };
-		B2AAB24C1F06F907008D061B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2AAB24A1F06F907008D061B /* Main.storyboard */; };
 		B2AAB24E1F06F907008D061B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2AAB24D1F06F907008D061B /* Assets.xcassets */; };
 		B2AAB2511F06F907008D061B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2AAB24F1F06F907008D061B /* LaunchScreen.storyboard */; };
 		B2AAB25C1F06F908008D061B /* GainBoyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB25B1F06F908008D061B /* GainBoyTests.swift */; };
@@ -44,9 +45,10 @@
 /* Begin PBXFileReference section */
 		B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoDataSource.swift; sourceTree = "<group>"; };
 		B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
+		B2843AC81F0EA34E0013C09E /* Kirbys-Adventure.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kirbys-Adventure.ttf"; sourceTree = "<group>"; };
+		B2843ACD1F0EA5B20013C09E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B2AAB2431F06F907008D061B /* GainBoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GainBoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2AAB2461F06F907008D061B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B2AAB24B1F06F907008D061B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2AAB24D1F06F907008D061B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2AAB2501F06F907008D061B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2AAB2521F06F907008D061B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,10 +92,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B2843ACA1F0EA3610013C09E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B2843AC81F0EA34E0013C09E /* Kirbys-Adventure.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		B2AAB23A1F06F907008D061B = {
 			isa = PBXGroup;
 			children = (
 				B2AAB2451F06F907008D061B /* GainBoy */,
+				B2843ACA1F0EA3610013C09E /* Resources */,
 				B2AAB25A1F06F908008D061B /* GainBoyTests */,
 				B2AAB2651F06F908008D061B /* GainBoyUITests */,
 				B2AAB2441F06F907008D061B /* Products */,
@@ -126,7 +137,7 @@
 				B2AAB2741F06FA22008D061B /* MainMenuViewController.swift */,
 				B2AAB24D1F06F907008D061B /* Assets.xcassets */,
 				B2AAB24F1F06F907008D061B /* LaunchScreen.storyboard */,
-				B2AAB24A1F06F907008D061B /* Main.storyboard */,
+				B2843ACD1F0EA5B20013C09E /* Main.storyboard */,
 			);
 			path = GainBoy;
 			sourceTree = "<group>";
@@ -259,9 +270,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */,
 				B2AAB2511F06F907008D061B /* LaunchScreen.storyboard in Resources */,
 				B2AAB24E1F06F907008D061B /* Assets.xcassets in Resources */,
-				B2AAB24C1F06F907008D061B /* Main.storyboard in Resources */,
+				B2843AC91F0EA34E0013C09E /* Kirbys-Adventure.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,14 +343,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B2AAB24A1F06F907008D061B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2AAB24B1F06F907008D061B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B2AAB24F1F06F907008D061B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
