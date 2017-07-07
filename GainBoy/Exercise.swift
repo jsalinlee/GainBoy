@@ -11,9 +11,9 @@ import UIKit
 class Exercise: NSObject {
     var name: String
     var reps: [Int]
-    var weights: [Int]
+    var weights: [Double]
     
-    init(name: String, reps: [Int], weights: [Int]) {
+    init(name: String, reps: [Int], weights: [Double]) {
         self.name = name
         self.reps = reps
         self.weights = weights

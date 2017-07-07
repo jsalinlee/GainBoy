@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
+class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelegate {
     var exercises: [Exercise] = []
     var currentlyEditing: Bool = false
     
@@ -21,6 +21,8 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        let exercise = exercises[section]
+//        return exercise.name
         for i in 0..<exercises.count {
             if section == i {
                 return exercises[i].name
@@ -32,7 +34,7 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         for i in 0..<exercises.count {
             if section == i {
-                return exercises[i].reps.count + 1
+                return exercises[i].reps.count
             }
         }
         if section == exercises.count {
@@ -41,64 +43,42 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITableViewDelega
         return 0
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        header.backgroundColor = UIColor.white
-        
-        
-        for i in 0..<exercises.count {
-            if section == i {
-                let headerTitle = UILabel(frame: CGRect(x: 10, y: 0, width: header.frame.width - 100, height: 50))
-                let font = UIFont(name: "Kirby\'s-Adventure", size: 20)
-                headerTitle.font = font
-                headerTitle.text = exercises[i].name
-                header.addSubview(headerTitle)
-            }
-        }
-        
-        if currentlyEditing == true {
-            let addSetButton = UIButton(type: UIButtonType.custom) as UIButton
-            addSetButton.frame = CGRect(x: header.frame.width - 80, y: -5, width: 100, height: 50)
-            addSetButton.addTarget(self, action: #selector(addSetButtonPressed), for: .touchUpInside)
-            addSetButton.setTitleColor(header.tintColor, for: .normal)
-            
-            let biggerFont = addSetButton.titleLabel?.font.withSize(36.0)
-            addSetButton.titleLabel?.font = biggerFont
-            
-            addSetButton.setTitle("+", for: .normal)
-            
-            
-            header.addSubview(addSetButton)
-            
-        }
-        
-        return header
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section < exercises.count {
-            return 50
-        } else {
-            return 0
-        }
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == exercises.count && currentlyEditing == true{
+        if indexPath.section >= exercises.count && currentlyEditing == true {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addExerciseTableViewCell", for: indexPath)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "setTableViewCell", for: indexPath) as! SetTableViewCell
             cell.setNumber.text = "Set #\(String(indexPath.row + 1))"
+            
+//            print(indexPath.section)
+//            print(indexPath.row)
+            
+            cell.repsTextField.text = String(exercises[indexPath.section].reps[indexPath.row])
+            print(String(exercises[indexPath.section].reps[indexPath.row]))
             cell.repsTextField.placeholder = "0"
+            cell.weightTextField.text = String(exercises[indexPath.section].weights[indexPath.row])
             cell.weightTextField.placeholder = "0"
+            
+            cell.repsTextField.tag = indexPath.row + 100 * indexPath.section
+            cell.weightTextField.tag = (indexPath.row + 100 * indexPath.section) * 2
+            
+            print("Reps tag number: \(cell.repsTextField.tag)")
+            print("Weight tag number: \(cell.weightTextField.tag)")
+            
+            if !currentlyEditing {
+                cell.repsTextField.isUserInteractionEnabled = false
+                cell.repsTextField.borderStyle = .none
+                cell.weightTextField.isUserInteractionEnabled = false
+                cell.weightTextField.borderStyle = .none
+            } else {
+                cell.repsTextField.isUserInteractionEnabled = true
+                cell.repsTextField.borderStyle = .roundedRect
+                cell.weightTextField.isUserInteractionEnabled = true
+                cell.weightTextField.borderStyle = .roundedRect
+            }
             return cell
         }
-    }
-    
-    func addSetButtonPressed(_ sender: UIButton) {
-        print("Successfully requested to add a set")
-        
     }
 }

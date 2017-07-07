@@ -8,15 +8,23 @@
 
 import UIKit
 
-class LogEntryInfoViewController: UIViewController, UITextFieldDelegate {
+class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
+    
+    private var sectionNumber = Int()
+
+// MARK: - Outlet Variables
+    
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var timeTextField: UITextField!
     @IBOutlet var weightTextField: UITextField!
     @IBOutlet var lengthTextField: UITextField!
     @IBOutlet var dateTextField: UITextField!
     @IBOutlet var allTextFields: [UITextField]!
+    @IBOutlet var journalLabel: UILabel!
     
-    @IBOutlet var exerciseList: UITableView!
+    @IBOutlet var tableView: UITableView!
+    
+// MARK: - Logistical Variables
     
     var date = Date()
     
@@ -25,6 +33,9 @@ class LogEntryInfoViewController: UIViewController, UITextFieldDelegate {
     weak var delegate: AdventureLogViewController?
     
     let logEntryInfoDataSource = LogEntryInfoDataSource()
+    var exercises: [Exercise] = []
+    
+// MARK: - Date Formatters
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -38,39 +49,104 @@ class LogEntryInfoViewController: UIViewController, UITextFieldDelegate {
         return formatter
     }()
     let datePicker = UIDatePicker()
+
+// MARK: - View Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
         
-        let fontFamilyNames = UIFont.familyNames
-        for familyName in fontFamilyNames {
-            print("Font Family Name: \(familyName)")
-            let name = UIFont.fontNames(forFamilyName: familyName)
-            print("Font name: \(name)")
-        }
+//        let fontFamilyNames = UIFont.familyNames
+//        for familyName in fontFamilyNames {
+//            print("Font Family Name: \(familyName)")
+//            let name = UIFont.fontNames(forFamilyName: familyName)
+//            print("Font name: \(name)")
+//        }
         
         if navigationItem.rightBarButtonItem?.title == "Done" {
             for textField in allTextFields {
                 logEntryInfoDataSource.currentlyEditing = true
-                self.exerciseList.reloadData()
+                self.tableView.reloadData()
                 textField.borderStyle = .roundedRect
                 textField.isUserInteractionEnabled = true
             }
         } else {
             for textField in allTextFields {
                 logEntryInfoDataSource.currentlyEditing = false
-                self.exerciseList.reloadData()
+                self.tableView.reloadData()
                 textField.borderStyle = .none
                 textField.isUserInteractionEnabled = false
             }
         }
         
-        exerciseList.dataSource = logEntryInfoDataSource
-        exerciseList.delegate = logEntryInfoDataSource
+        tableView.dataSource = logEntryInfoDataSource
+        logEntryInfoDataSource.exercises = exercises
+        
         dateTextField.inputView = datePicker
         dateTextField.text = dateFormatter.string(from: date)
         timeTextField.inputView = datePicker
         timeTextField.text = timeFormatter.string(from: date)
+        journalLabel.attributedText = NSAttributedString(string: "Journal", attributes:
+            [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+    }
+    
+// MARK: - Table methods
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        header.backgroundColor = UIColor.white
+        
+        
+        for i in 0..<logEntryInfoDataSource.exercises.count {
+            if section == i {
+                let headerTitle = UILabel(frame: CGRect(x: 10, y: 0, width: header.frame.width - 100, height: 50))
+                headerTitle.text = logEntryInfoDataSource.exercises[i].name
+                header.addSubview(headerTitle)
+            }
+        }
+        
+        if logEntryInfoDataSource.currentlyEditing == true {
+            let addSetButton = AddSetButton(type: UIButtonType.custom) as AddSetButton
+            addSetButton.frame = CGRect(x: header.frame.width - 80, y: -5, width: 100, height: 50)
+            addSetButton.setTitleColor(header.tintColor, for: .normal)
+            addSetButton.setTitle("+", for: .normal)
+            
+            let biggerFont = addSetButton.titleLabel?.font.withSize(36.0)
+            addSetButton.titleLabel?.font = biggerFont
+            
+            addSetButton.addTarget(self, action: #selector(addSetButtonPressed), for: .touchUpInside)
+            addSetButton.section = section
+            
+            header.addSubview(addSetButton)
+        }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section < logEntryInfoDataSource.exercises.count {
+            return 50
+        } else {
+            return 0
+        }
+    }
+    
+// MARK: - UI Interactions
+    
+    func getSectionNumber() -> Int {
+        return sectionNumber
+    }
+    
+    func setSectionNumber(section: Int) {
+        sectionNumber = section
+    }
+    
+    func addSetButtonPressed(_ sender: AddSetButton) {
+        print("Successfully requested to add a set")
+        let exerciseIndex = sender.section
+        logEntryInfoDataSource.exercises[exerciseIndex].reps.append(0)
+        logEntryInfoDataSource.exercises[exerciseIndex].weights.append(0)
+        tableView.reloadData()
     }
     
     @IBAction func entryRightBarButtonPressed(_ sender: UIBarButtonItem) {
@@ -82,16 +158,26 @@ class LogEntryInfoViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             logEntryInfoDataSource.currentlyEditing = false
-            self.exerciseList.reloadData()
+            self.tableView.reloadData()
             
             let timeLog = timeFormatter.date(from: timeTextField.text!)
             let dateLog = dateFormatter.date(from: dateTextField.text!)
             
             delegate?.addAdventure(by: self, t: titleTextField.text!, d: dateLog!, time: timeLog!, w: Double(weightTextField.text!)!, e: logEntryInfoDataSource.exercises, indexPath: indexPath)
+            
+            self.navigationItem.rightBarButtonItem?.title = "Edit"
+            self.navigationItem.leftBarButtonItem?.title = "Back"
+            
+            
+            for textField in allTextFields {
+                textField.borderStyle = .none
+                textField.isUserInteractionEnabled = false
+            }
+            
         } else if sender.title == "Edit" {
             
             logEntryInfoDataSource.currentlyEditing = true
-            self.exerciseList.reloadData()
+            self.tableView.reloadData()
             
             for textField in allTextFields {
                 textField.borderStyle = .roundedRect
@@ -111,9 +197,6 @@ class LogEntryInfoViewController: UIViewController, UITextFieldDelegate {
 //            print("Back button pressed")
         delegate?.cancelButtonPressed(by: self)
 //        }
-        
-        logEntryInfoDataSource.currentlyEditing = false
-        self.exerciseList.reloadData()
     }
     
     @IBAction func addExerciseButtonPressed(_ sender: UIButton) {
@@ -124,9 +207,13 @@ class LogEntryInfoViewController: UIViewController, UITextFieldDelegate {
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
             if let exerciseName = alertController.textFields?.first?.text {
                 if exerciseName != "" {
-                    let newExercise = Exercise(name: exerciseName, reps: [], weights: [])
+                    let newExercise = Exercise(name: exerciseName, reps: [0], weights: [0])
                     self.logEntryInfoDataSource.exercises.append(newExercise)
-                    self.exerciseList.reloadData()
+                    print("Successfully entered a new exercise.")
+//                    let newExerciseIndex = self.logEntryInfoDataSource.exercises.index(of: newExercise)
+//                    self.tableView.insertSections([newExerciseIndex!], with: .bottom)
+                    
+                    self.tableView.reloadData()
                 }
             }
         }
@@ -138,7 +225,15 @@ class LogEntryInfoViewController: UIViewController, UITextFieldDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
+// MARK: - Text Formatting
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.tag == 1 && textField.text == "0" {
+            textField.text = ""
+        }
+        if textField.tag == 2 && textField.text == "0" {
+            textField.text = ""
+        }
         if textField == timeTextField {
             let timePickerView: UIDatePicker = UIDatePicker()
             timePickerView.datePickerMode = UIDatePickerMode.time
@@ -149,6 +244,36 @@ class LogEntryInfoViewController: UIViewController, UITextFieldDelegate {
             datePickerView.datePickerMode = UIDatePickerMode.date
             textField.inputView = datePickerView
             datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: UIControlEvents.valueChanged)
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        let exercises = logEntryInfoDataSource.exercises
+        
+//        var tempDict: [Int: [Int]] = [:]
+//        for i in 0..<exercises.count {
+//            tempDict[i] = exercises[i].reps
+//        }
+        
+        guard textField.text != "" else {
+            print("textField is empty")
+            return
+        }
+        for i in 0..<exercises.count {
+            let reps = logEntryInfoDataSource.exercises[i].reps
+            print("Reps Now: \(reps)")
+            for j in 0..<reps.count {
+                print("Loops once")
+                if textField.tag == (reps.count - 1) + (exercises.count - 1) * 100 {
+                    logEntryInfoDataSource.exercises[i].reps[j] = Int(textField.text!)!
+                    print("\(logEntryInfoDataSource.exercises[i].reps[j])")
+                }
+                if textField.tag == (reps.count + (exercises.count - 1) * 100) * 2 {
+                    logEntryInfoDataSource.exercises[i].weights[j] = Double(textField.text!)!
+                    return
+                }
+            }
         }
     }
     

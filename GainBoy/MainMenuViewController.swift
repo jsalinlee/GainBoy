@@ -19,9 +19,8 @@ class MainMenuViewController: UIViewController {
     
     var health: Double = 50.0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @IBAction func showLog(_ sender: UIButton) {
+        performSegue(withIdentifier: "showLog", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

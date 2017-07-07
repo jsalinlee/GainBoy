@@ -36,6 +36,8 @@ class AdventureLogViewController: UITableViewController, LogEntryInfoViewControl
             logEntryInfoViewController.navigationItem.leftBarButtonItem?.title = "Back"
             logEntryInfoViewController.logEntry = adventureLogDataSource.adventures[indexPath.row]
             logEntryInfoViewController.title = adventureLogDataSource.dateFormatter.string(from: adventureLogDataSource.adventures[indexPath.row].date)
+            logEntryInfoViewController.date = adventureLogDataSource.adventures[indexPath.row].date
+            logEntryInfoViewController.exercises = adventureLogDataSource.adventures[indexPath.row].exercises
             
         } else if segue.identifier == "addLogEntry" {
             

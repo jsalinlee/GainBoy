@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B22CEEE41F0F0B3400444464 /* Kirbys-Adventure.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2843AC81F0EA34E0013C09E /* Kirbys-Adventure.ttf */; };
 		B2843AC31F0AE5D20013C09E /* LogEntryInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */; };
 		B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */; };
-		B2843AC91F0EA34E0013C09E /* Kirbys-Adventure.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2843AC81F0EA34E0013C09E /* Kirbys-Adventure.ttf */; };
 		B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2843ACD1F0EA5B20013C09E /* Main.storyboard */; };
 		B2AAB2471F06F907008D061B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2461F06F907008D061B /* AppDelegate.swift */; };
 		B2AAB24E1F06F907008D061B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2AAB24D1F06F907008D061B /* Assets.xcassets */; };
@@ -23,6 +23,8 @@
 		B2AAB27F1F071C2F008D061B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB27E1F071C2F008D061B /* Exercise.swift */; };
 		B2AAB2811F072138008D061B /* AdventureLogDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */; };
 		B2B90B731F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */; };
+		B2D9DFA91F0EBCB10055DCA7 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D9DFA81F0EBCB10055DCA7 /* FontExtensions.swift */; };
+		B2D9DFAB1F0EE4650055DCA7 /* AddSetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D9DFAA1F0EE4650055DCA7 /* AddSetButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		B2AAB27E1F071C2F008D061B /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureLogDataSource.swift; sourceTree = "<group>"; };
 		B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoViewControllerDelegate.swift; sourceTree = "<group>"; };
+		B2D9DFA81F0EBCB10055DCA7 /* FontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
+		B2D9DFAA1F0EE4650055DCA7 /* AddSetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSetButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +134,10 @@
 				B2AAB2761F070EEE008D061B /* AdventureLogViewController.swift */,
 				B2AAB2461F06F907008D061B /* AppDelegate.swift */,
 				B2AAB27E1F071C2F008D061B /* Exercise.swift */,
+				B2D9DFAA1F0EE4650055DCA7 /* AddSetButton.swift */,
 				B2AAB2781F0717ED008D061B /* LogEntryInfoViewController.swift */,
 				B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */,
+				B2D9DFA81F0EBCB10055DCA7 /* FontExtensions.swift */,
 				B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */,
 				B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */,
 				B2AAB2741F06FA22008D061B /* MainMenuViewController.swift */,
@@ -273,7 +279,7 @@
 				B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */,
 				B2AAB2511F06F907008D061B /* LaunchScreen.storyboard in Resources */,
 				B2AAB24E1F06F907008D061B /* Assets.xcassets in Resources */,
-				B2843AC91F0EA34E0013C09E /* Kirbys-Adventure.ttf in Resources */,
+				B22CEEE41F0F0B3400444464 /* Kirbys-Adventure.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +309,9 @@
 				B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */,
 				B2AAB2811F072138008D061B /* AdventureLogDataSource.swift in Sources */,
 				B2AAB2471F06F907008D061B /* AppDelegate.swift in Sources */,
+				B2D9DFAB1F0EE4650055DCA7 /* AddSetButton.swift in Sources */,
 				B2AAB27D1F071A6C008D061B /* Adventure.swift in Sources */,
+				B2D9DFA91F0EBCB10055DCA7 /* FontExtensions.swift in Sources */,
 				B2B90B731F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift in Sources */,
 				B2AAB27F1F071C2F008D061B /* Exercise.swift in Sources */,
 				B2843AC31F0AE5D20013C09E /* LogEntryInfoDataSource.swift in Sources */,
