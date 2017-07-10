@@ -35,13 +35,22 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     let logEntryInfoDataSource = LogEntryInfoDataSource()
     var exercises: [Exercise] = []
     
-// MARK: - Date Formatters
+// MARK: - Date and Number Formatters
+    
+    let numberFormatter: NumberFormatter = {
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        nf.minimumFractionDigits = 0
+        nf.maximumFractionDigits = 1
+        return nf;
+    }()
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter
     }()
+    
     let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
@@ -133,14 +142,6 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     
 // MARK: - UI Interactions
     
-    func getSectionNumber() -> Int {
-        return sectionNumber
-    }
-    
-    func setSectionNumber(section: Int) {
-        sectionNumber = section
-    }
-    
     func addSetButtonPressed(_ sender: AddSetButton) {
         print("Successfully requested to add a set")
         let exerciseIndex = sender.section
@@ -228,10 +229,7 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
 // MARK: - Text Formatting
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.tag == 1 && textField.text == "0" {
-            textField.text = ""
-        }
-        if textField.tag == 2 && textField.text == "0" {
+        if textField.tag != 0 && textField.text == "0" || textField.tag != 0 && textField.text == "0.0"{
             textField.text = ""
         }
         if textField == timeTextField {
@@ -248,13 +246,10 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        if textField.tag != 0 && textField.text == "" {
+            textField.text = "0"
+        }
         let exercises = logEntryInfoDataSource.exercises
-        
-//        var tempDict: [Int: [Int]] = [:]
-//        for i in 0..<exercises.count {
-//            tempDict[i] = exercises[i].reps
-//        }
         
         guard textField.text != "" else {
             print("textField is empty")
@@ -262,18 +257,35 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
         }
         for i in 0..<exercises.count {
             let reps = logEntryInfoDataSource.exercises[i].reps
-            print("Reps Now: \(reps)")
+//            let weights = logEntryInfoDataSource.exercises[i].weights
             for j in 0..<reps.count {
-                print("Loops once")
-                if textField.tag == (reps.count - 1) + (exercises.count - 1) * 100 {
+                if textField.tag == (j + i * 100) + 2 {
                     logEntryInfoDataSource.exercises[i].reps[j] = Int(textField.text!)!
-                    print("\(logEntryInfoDataSource.exercises[i].reps[j])")
+                    return
                 }
-                if textField.tag == (reps.count + (exercises.count - 1) * 100) * 2 {
-                    logEntryInfoDataSource.exercises[i].weights[j] = Double(textField.text!)!
+                if textField.tag == -(j + i * 100) - 1 {
+                    let weight = numberFormatter.number(from: textField.text!)
+                    logEntryInfoDataSource.exercises[i].weights[j] = (weight?.doubleValue)!
                     return
                 }
             }
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentLocale = Locale.current;
+        let decimalSeparator = currentLocale.decimalSeparator ?? ".";
+        
+        let existingTextHasDecimalSeparator = textField.text?.range(of: decimalSeparator);
+        let replacementTextHasDecimalSeparator = string.range(of: decimalSeparator);
+        
+        let onlyDigits = string.rangeOfCharacter(from: NSCharacterSet.letters);
+        
+        if textField.tag != 0 && existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil || onlyDigits != nil {
+            return false;
+        } else {
+            return true;
         }
     }
     

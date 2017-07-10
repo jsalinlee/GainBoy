@@ -56,13 +56,13 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelega
 //            print(indexPath.row)
             
             cell.repsTextField.text = String(exercises[indexPath.section].reps[indexPath.row])
-            print(String(exercises[indexPath.section].reps[indexPath.row]))
+//            print(String(exercises[indexPath.section].reps[indexPath.row]))
             cell.repsTextField.placeholder = "0"
             cell.weightTextField.text = String(exercises[indexPath.section].weights[indexPath.row])
             cell.weightTextField.placeholder = "0"
             
-            cell.repsTextField.tag = indexPath.row + 100 * indexPath.section
-            cell.weightTextField.tag = (indexPath.row + 100 * indexPath.section) * 2
+            cell.repsTextField.tag = (indexPath.row + indexPath.section * 100) + 2
+            cell.weightTextField.tag = -(indexPath.row + indexPath.section * 100) - 1
             
             print("Reps tag number: \(cell.repsTextField.tag)")
             print("Weight tag number: \(cell.weightTextField.tag)")
