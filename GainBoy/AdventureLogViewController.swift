@@ -11,8 +11,10 @@ import UIKit
 class AdventureLogViewController: UITableViewController, LogEntryInfoViewControllerDelegate {
     let adventureLogDataSource = AdventureLogDataSource()
     var selectedLogIndex = Int()
+    var duplicateLog = Bool()
     
     override func viewDidLoad() {
+        duplicateLog = false;
         super .viewDidLoad()
         
         tableView.dataSource = adventureLogDataSource
@@ -42,7 +44,6 @@ class AdventureLogViewController: UITableViewController, LogEntryInfoViewControl
             logEntryInfoViewController.logTitle = existingLog.title
             logEntryInfoViewController.date = existingLog.date
             logEntryInfoViewController.time = existingLog.time
-            logEntryInfoViewController.weight = existingLog.weight
             logEntryInfoViewController.exercises = existingLog.exercises
             
         } else if segue.identifier == "addLogEntry" {
@@ -61,19 +62,18 @@ class AdventureLogViewController: UITableViewController, LogEntryInfoViewControl
         dismiss(animated: true, completion: nil)
     }
     
-    func addAdventure(by controller: LogEntryInfoViewController, t title: String, d date: Date, time: Date, w weight: Double, e exercises: [Exercise], indexPath: IndexPath?) {
+    func addAdventure(by controller: LogEntryInfoViewController, t title: String, d date: Date, time: Date, e exercises: [Exercise], indexPath: IndexPath?) {
         if let indexPath = indexPath {
             let editedLog = adventureLogDataSource.adventures[indexPath.row]
             editedLog.title = title
             editedLog.date = date
             editedLog.time = time
-            editedLog.weight = weight
             editedLog.exercises = exercises
-        } else {
-            let newAdventure = Adventure(title: title, date: date, time: time, weight: weight, exercises: exercises)
+        } else if !(duplicateLog) {
+            let newAdventure = Adventure(title: title, date: date, time: time, exercises: exercises)
             adventureLogDataSource.adventures.append(newAdventure)
+            duplicateLog = true;
         }
         tableView.reloadData()
-        dismiss(animated: true, completion: nil)
     }
 }

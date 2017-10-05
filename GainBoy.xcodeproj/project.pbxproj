@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B22CEEE41F0F0B3400444464 /* Kirbys-Adventure.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2843AC81F0EA34E0013C09E /* Kirbys-Adventure.ttf */; };
 		B2843AC31F0AE5D20013C09E /* LogEntryInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */; };
 		B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */; };
 		B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2843ACD1F0EA5B20013C09E /* Main.storyboard */; };
@@ -47,7 +46,6 @@
 /* Begin PBXFileReference section */
 		B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoDataSource.swift; sourceTree = "<group>"; };
 		B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
-		B2843AC81F0EA34E0013C09E /* Kirbys-Adventure.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kirbys-Adventure.ttf"; sourceTree = "<group>"; };
 		B2843ACD1F0EA5B20013C09E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B2AAB2431F06F907008D061B /* GainBoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GainBoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2AAB2461F06F907008D061B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 		B2843ACA1F0EA3610013C09E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B2843AC81F0EA34E0013C09E /* Kirbys-Adventure.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -290,7 +287,6 @@
 				B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */,
 				B2AAB2511F06F907008D061B /* LaunchScreen.storyboard in Resources */,
 				B2AAB24E1F06F907008D061B /* Assets.xcassets in Resources */,
-				B22CEEE41F0F0B3400444464 /* Kirbys-Adventure.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

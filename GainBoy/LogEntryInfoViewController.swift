@@ -95,8 +95,6 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
         dateTextField.text = dateFormatter.string(from: date)
         timeTextField.inputView = datePicker
         timeTextField.text = timeFormatter.string(from: time)
-        weightTextField.text = String(weight)
-        
         journalLabel.attributedText = NSAttributedString(string: "Journal", attributes:
             [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
         
@@ -158,18 +156,19 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     @IBAction func entryRightBarButtonPressed(_ sender: UIBarButtonItem) {
         if sender.title == "Done" {
             print("Hooligans")
+            if (indexPath == nil) {
+                delegate?.duplicateLog = false;
+            }
             
-            guard timeTextField.text != "", dateTextField.text != "", weightTextField.text != "" else {
+            guard timeTextField.text != "", dateTextField.text != "" else {
                 print("Error, one or more fields left blank")
-                return
+                return;
             }
             logEntryInfoDataSource.currentlyEditing = false
-            self.tableView.reloadData()
             
             let timeLog = timeFormatter.date(from: timeTextField.text!)
             let dateLog = dateFormatter.date(from: dateTextField.text!)
-            
-            delegate?.addAdventure(by: self, t: titleTextField.text!, d: dateLog!, time: timeLog!, w: Double(weightTextField.text!)!, e: logEntryInfoDataSource.exercises, indexPath: indexPath)
+            delegate?.addAdventure(by: self, t: titleTextField.text!, d: dateLog!, time: timeLog!, e: logEntryInfoDataSource.exercises, indexPath: indexPath)
             
             self.navigationItem.rightBarButtonItem?.title = "Edit"
             self.navigationItem.leftBarButtonItem?.title = "Back"
@@ -180,6 +179,7 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
                 textField.isUserInteractionEnabled = false
             }
             
+            self.tableView.reloadData()
         } else if sender.title == "Edit" {
             
             logEntryInfoDataSource.currentlyEditing = true
@@ -196,13 +196,12 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     }
     
     @IBAction func entryLeftBarButtonPressed(_ sender: UIBarButtonItem) {
-//        if sender.title == "Cancel" {
-//            print("Cancel button pressed")
-//            delegate?.cancelButtonPressed(by: self)
-//        } else if sender.title == "Back" {
-//            print("Back button pressed")
-        delegate?.cancelButtonPressed(by: self)
-//        }
+        if sender.title == "Cancel" {
+            print("Cancel button pressed")
+        } else if sender.title == "Back" {
+            print("Back button pressed")
+            delegate?.cancelButtonPressed(by: self)
+        }
     }
     
     @IBAction func addExerciseButtonPressed(_ sender: UIButton) {
