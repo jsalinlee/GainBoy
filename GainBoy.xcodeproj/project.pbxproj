@@ -108,10 +108,10 @@
 			isa = PBXGroup;
 			children = (
 				B2AAB2451F06F907008D061B /* GainBoy */,
-				B2843ACA1F0EA3610013C09E /* Resources */,
 				B2AAB25A1F06F908008D061B /* GainBoyTests */,
 				B2AAB2651F06F908008D061B /* GainBoyUITests */,
 				B2AAB2441F06F907008D061B /* Products */,
+				B2843ACA1F0EA3610013C09E /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,17 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				B2AAB2521F06F907008D061B /* Info.plist */,
-				B2AAB27C1F071A6C008D061B /* Adventure.swift */,
-				B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */,
-				B2AAB2761F070EEE008D061B /* AdventureLogViewController.swift */,
 				B2AAB2461F06F907008D061B /* AppDelegate.swift */,
-				B2AAB27E1F071C2F008D061B /* Exercise.swift */,
-				B2D9DFAA1F0EE4650055DCA7 /* AddSetButton.swift */,
-				B2AAB2781F0717ED008D061B /* LogEntryInfoViewController.swift */,
-				B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */,
+				B2C639531F5743150088FC35 /* AdventureLog */,
 				B2D9DFA81F0EBCB10055DCA7 /* FontExtensions.swift */,
-				B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */,
-				B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */,
 				B2AAB2741F06FA22008D061B /* MainMenuViewController.swift */,
 				B2AAB24D1F06F907008D061B /* Assets.xcassets */,
 				B2AAB24F1F06F907008D061B /* LaunchScreen.storyboard */,
@@ -164,6 +156,22 @@
 				B2AAB2681F06F908008D061B /* Info.plist */,
 			);
 			path = GainBoyUITests;
+			sourceTree = "<group>";
+		};
+		B2C639531F5743150088FC35 /* AdventureLog */ = {
+			isa = PBXGroup;
+			children = (
+				B2D9DFAA1F0EE4650055DCA7 /* AddSetButton.swift */,
+				B2AAB27C1F071A6C008D061B /* Adventure.swift */,
+				B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */,
+				B2AAB2761F070EEE008D061B /* AdventureLogViewController.swift */,
+				B2AAB27E1F071C2F008D061B /* Exercise.swift */,
+				B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */,
+				B2AAB2781F0717ED008D061B /* LogEntryInfoViewController.swift */,
+				B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */,
+				B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */,
+			);
+			name = AdventureLog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,23 +237,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Salin Studios";
 				TargetAttributes = {
 					B2AAB2421F06F907008D061B = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = E97A27U9FU;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					B2AAB2561F06F908008D061B = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = E97A27U9FU;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B2AAB2421F06F907008D061B;
 					};
 					B2AAB2611F06F908008D061B = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = E97A27U9FU;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B2AAB2421F06F907008D061B;
 					};
@@ -372,7 +383,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -380,7 +393,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -423,7 +440,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -431,7 +450,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -466,7 +489,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SalinStudios.GainBoy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -479,7 +503,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SalinStudios.GainBoy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -493,7 +518,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SalinStudios.GainBoyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GainBoy.app/GainBoy";
 			};
 			name = Debug;
@@ -508,7 +534,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SalinStudios.GainBoyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GainBoy.app/GainBoy";
 			};
 			name = Release;
@@ -522,7 +549,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SalinStudios.GainBoyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = GainBoy;
 			};
 			name = Debug;
@@ -536,7 +564,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SalinStudios.GainBoyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = GainBoy;
 			};
 			name = Release;

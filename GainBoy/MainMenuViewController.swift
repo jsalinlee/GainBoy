@@ -17,7 +17,7 @@ class MainMenuViewController: UIViewController {
     @IBOutlet var levelLabel: UILabel!
     @IBOutlet var rankLabel: UILabel!
     
-    var health: Double = 50.0
+    var health: Double = 100.0
     
     @IBAction func showLog(_ sender: UIButton) {
         performSegue(withIdentifier: "showLog", sender: self)

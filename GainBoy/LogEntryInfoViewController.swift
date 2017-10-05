@@ -26,8 +26,10 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     
 // MARK: - Logistical Variables
     
+    var logTitle = String()
     var date = Date()
-    
+    var time = Date()
+    var weight = Double()
     var logEntry: Adventure!
     var indexPath: IndexPath?
     weak var delegate: AdventureLogViewController?
@@ -88,15 +90,18 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
             }
         }
         
-        tableView.dataSource = logEntryInfoDataSource
-        logEntryInfoDataSource.exercises = exercises
-        
+        titleTextField.text = logTitle
         dateTextField.inputView = datePicker
         dateTextField.text = dateFormatter.string(from: date)
         timeTextField.inputView = datePicker
-        timeTextField.text = timeFormatter.string(from: date)
+        timeTextField.text = timeFormatter.string(from: time)
+        weightTextField.text = String(weight)
+        
         journalLabel.attributedText = NSAttributedString(string: "Journal", attributes:
-            [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue])
+            [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
+        
+        tableView.dataSource = logEntryInfoDataSource
+        logEntryInfoDataSource.exercises = exercises
     }
     
 // MARK: - Table methods
@@ -142,7 +147,7 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     
 // MARK: - UI Interactions
     
-    func addSetButtonPressed(_ sender: AddSetButton) {
+    @objc func addSetButtonPressed(_ sender: AddSetButton) {
         print("Successfully requested to add a set")
         let exerciseIndex = sender.section
         logEntryInfoDataSource.exercises[exerciseIndex].reps.append(0)
@@ -289,11 +294,11 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
         }
     }
     
-    func timePickerValueChanged(sender: UIDatePicker) {
+    @objc func timePickerValueChanged(sender: UIDatePicker) {
         timeTextField.text = timeFormatter.string(from: sender.date)
     }
     
-    func datePickerValueChanged(sender: UIDatePicker) {
+    @objc func datePickerValueChanged(sender: UIDatePicker) {
         dateTextField.text = dateFormatter.string(from: sender.date)
     }
     

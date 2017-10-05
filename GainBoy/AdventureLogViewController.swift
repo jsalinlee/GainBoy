@@ -30,22 +30,30 @@ class AdventureLogViewController: UITableViewController, LogEntryInfoViewControl
         
         if segue.identifier == "showLogEntry" {
             
-            let indexPath = sender as! IndexPath
-            logEntryInfoViewController.indexPath = indexPath
             logEntryInfoViewController.navigationItem.rightBarButtonItem?.title = "Edit"
             logEntryInfoViewController.navigationItem.leftBarButtonItem?.title = "Back"
-            logEntryInfoViewController.logEntry = adventureLogDataSource.adventures[indexPath.row]
+            
+            let indexPath = sender as! IndexPath
+            logEntryInfoViewController.indexPath = indexPath
             logEntryInfoViewController.title = adventureLogDataSource.dateFormatter.string(from: adventureLogDataSource.adventures[indexPath.row].date)
-            logEntryInfoViewController.date = adventureLogDataSource.adventures[indexPath.row].date
-            logEntryInfoViewController.exercises = adventureLogDataSource.adventures[indexPath.row].exercises
+            let existingLog = adventureLogDataSource.adventures[indexPath.row]
+            
+            logEntryInfoViewController.logEntry = existingLog
+            logEntryInfoViewController.logTitle = existingLog.title
+            logEntryInfoViewController.date = existingLog.date
+            logEntryInfoViewController.time = existingLog.time
+            logEntryInfoViewController.weight = existingLog.weight
+            logEntryInfoViewController.exercises = existingLog.exercises
             
         } else if segue.identifier == "addLogEntry" {
             
             logEntryInfoViewController.navigationItem.rightBarButtonItem?.title = "Done"
             logEntryInfoViewController.navigationItem.leftBarButtonItem?.title = "Cancel"
+            
             let currentDate = Date.init()
             logEntryInfoViewController.title = adventureLogDataSource.dateFormatter.string(from: currentDate)
             logEntryInfoViewController.date = currentDate
+            logEntryInfoViewController.time = currentDate
         }
     }
     
