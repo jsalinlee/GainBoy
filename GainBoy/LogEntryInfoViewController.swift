@@ -22,9 +22,10 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     @IBOutlet var allTextFields: [UITextField]!
     @IBOutlet var journalLabel: UILabel!
     
+    @IBOutlet var activeText: UITextField!
     @IBOutlet var tableView: UITableView!
     
-// MARK: - Logistical Variables
+    // MARK: - Logistical Variables
     
     var logTitle = String()
     var date = Date()
@@ -33,7 +34,6 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     var logEntry: Adventure!
     var indexPath: IndexPath?
     weak var delegate: AdventureLogViewController?
-    
     let logEntryInfoDataSource = LogEntryInfoDataSource()
     var exercises: [Exercise] = []
     
@@ -67,6 +67,7 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
         super.viewDidLoad()
         tableView.delegate = self
         
+        journalLabel.font = UILabel.appearance().font.withSize(CGFloat(26))
 //        let fontFamilyNames = UIFont.familyNames
 //        for familyName in fontFamilyNames {
 //            print("Font Family Name: \(familyName)")
@@ -100,6 +101,15 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
         
         tableView.dataSource = logEntryInfoDataSource
         logEntryInfoDataSource.exercises = exercises
+        
+        // Get keyboard height for when keyboard covers content
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
     }
     
 // MARK: - Table methods
@@ -156,15 +166,11 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     @IBAction func entryRightBarButtonPressed(_ sender: UIBarButtonItem) {
         if sender.title == "Done" {
             print("Hooligans")
-            if (indexPath == nil) {
-                delegate?.duplicateLog = false;
-            }
             
             guard timeTextField.text != "", dateTextField.text != "" else {
                 print("Error, one or more fields left blank")
                 return;
             }
-            logEntryInfoDataSource.currentlyEditing = false
             
             let timeLog = timeFormatter.date(from: timeTextField.text!)
             let dateLog = dateFormatter.date(from: dateTextField.text!)
@@ -173,31 +179,58 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
             self.navigationItem.rightBarButtonItem?.title = "Edit"
             self.navigationItem.leftBarButtonItem?.title = "Back"
             
-            
+            logEntryInfoDataSource.currentlyEditing = false
             for textField in allTextFields {
                 textField.borderStyle = .none
                 textField.isUserInteractionEnabled = false
+            }
+            
+            if (indexPath == nil) {
+                delegate?.cancelButtonPressed(by: self)
             }
             
             self.tableView.reloadData()
         } else if sender.title == "Edit" {
             
             logEntryInfoDataSource.currentlyEditing = true
-            self.tableView.reloadData()
-            
             for textField in allTextFields {
                 textField.borderStyle = .roundedRect
                 textField.isUserInteractionEnabled = true
             }
+            
             self.navigationItem.rightBarButtonItem?.title = "Done"
             self.navigationItem.leftBarButtonItem?.title = "Cancel"
+            self.tableView.reloadData()
             print("Hulagans")
         }
     }
     
     @IBAction func entryLeftBarButtonPressed(_ sender: UIBarButtonItem) {
         if sender.title == "Cancel" {
-            print("Cancel button pressed")
+//            self.navigationItem.rightBarButtonItem?.title = "Edit"
+//            self.navigationItem.leftBarButtonItem?.title = "Back"
+//
+//            for textField in allTextFields {
+//                textField.borderStyle = .none
+//                textField.isUserInteractionEnabled = false
+//            }
+//
+//            self.navigationItem.rightBarButtonItem?.title = "Edit"
+//            self.navigationItem.leftBarButtonItem?.title = "Back"
+//
+//            logEntryInfoDataSource.currentlyEditing = false
+            let alertController = UIAlertController(title: "", message: "Do you want to discard all of your changes?", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "Yes", style: .default, handler: { (action) -> Void in
+                self.delegate?.cancelButtonPressed(by: self)
+                print("Cancel button pressed")
+            })
+            let rejectAction = UIAlertAction.init(title: "No", style: .cancel, handler: nil)
+            
+            alertController.addAction(rejectAction)
+            alertController.addAction(confirmAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
         } else if sender.title == "Back" {
             print("Back button pressed")
             delegate?.cancelButtonPressed(by: self)
@@ -215,8 +248,6 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
                     let newExercise = Exercise(name: exerciseName, reps: [0], weights: [0])
                     self.logEntryInfoDataSource.exercises.append(newExercise)
                     print("Successfully entered a new exercise.")
-//                    let newExerciseIndex = self.logEntryInfoDataSource.exercises.index(of: newExercise)
-//                    self.tableView.insertSections([newExerciseIndex!], with: .bottom)
                     
                     self.tableView.reloadData()
                 }
@@ -235,6 +266,7 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.tag != 0 && textField.text == "0" || textField.tag != 0 && textField.text == "0.0"{
             textField.text = ""
+            activeText = textField
         }
         if textField == timeTextField {
             let timePickerView: UIDatePicker = UIDatePicker()
@@ -308,5 +340,36 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    // Moves view up when keyboard would cover content
+    @objc func keyboardWillShow(note: Notification) {
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            var frame = tableView.frame
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationBeginsFromCurrentState(true)
+            UIView.setAnimationDuration(0.3)
+            frame.size.height -= keyboardSize.height
+            tableView.frame = frame
+            if activeText != nil {
+                let rect = tableView.convert(activeText.bounds, from: activeText)
+                tableView.scrollRectToVisible(rect, animated: false)
+            }
+            UIView.commitAnimations()
+        }
+    }
+
+    // Moves view back down when keyboard is dismissed
+    @objc func keyboardWillHide(note: Notification) {
+        print("AAHHHH")
+        if let keyboardSize = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            var frame = tableView.frame
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationBeginsFromCurrentState(true)
+            UIView.setAnimationDuration(0.3)
+            frame.size.height += keyboardSize.height
+            tableView.frame = frame
+            UIView.commitAnimations()
+        }
     }
 }

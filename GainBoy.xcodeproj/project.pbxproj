@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B27CC8E81F8C2229009B7274 /* Cochin.ttc in Resources */ = {isa = PBXBuildFile; fileRef = B27CC8E71F8C2228009B7274 /* Cochin.ttc */; };
 		B2843AC31F0AE5D20013C09E /* LogEntryInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */; };
 		B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */; };
 		B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2843ACD1F0EA5B20013C09E /* Main.storyboard */; };
@@ -21,6 +22,8 @@
 		B2AAB27D1F071A6C008D061B /* Adventure.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB27C1F071A6C008D061B /* Adventure.swift */; };
 		B2AAB27F1F071C2F008D061B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB27E1F071C2F008D061B /* Exercise.swift */; };
 		B2AAB2811F072138008D061B /* AdventureLogDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */; };
+		B2B4B15E1F86F0A100A518FF /* EntryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B4B15D1F86F0A100A518FF /* EntryDetailsViewController.swift */; };
+		B2B4B1611F87337600A518FF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B4B1601F87337600A518FF /* Media.xcassets */; };
 		B2B90B731F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */; };
 		B2D9DFA91F0EBCB10055DCA7 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D9DFA81F0EBCB10055DCA7 /* FontExtensions.swift */; };
 		B2D9DFAB1F0EE4650055DCA7 /* AddSetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D9DFAA1F0EE4650055DCA7 /* AddSetButton.swift */; };
@@ -44,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B27CC8E71F8C2228009B7274 /* Cochin.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cochin.ttc; sourceTree = "<group>"; };
 		B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoDataSource.swift; sourceTree = "<group>"; };
 		B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
 		B2843ACD1F0EA5B20013C09E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 		B2AAB27C1F071A6C008D061B /* Adventure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adventure.swift; sourceTree = "<group>"; };
 		B2AAB27E1F071C2F008D061B /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureLogDataSource.swift; sourceTree = "<group>"; };
+		B2B4B15D1F86F0A100A518FF /* EntryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailsViewController.swift; sourceTree = "<group>"; };
+		B2B4B1601F87337600A518FF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B2B90B721F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoViewControllerDelegate.swift; sourceTree = "<group>"; };
 		B2D9DFA81F0EBCB10055DCA7 /* FontExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
 		B2D9DFAA1F0EE4650055DCA7 /* AddSetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSetButton.swift; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 		B2843ACA1F0EA3610013C09E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B27CC8E71F8C2228009B7274 /* Cochin.ttc */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -104,6 +111,7 @@
 		B2AAB23A1F06F907008D061B = {
 			isa = PBXGroup;
 			children = (
+				B2B4B1601F87337600A518FF /* Media.xcassets */,
 				B2AAB2451F06F907008D061B /* GainBoy */,
 				B2AAB25A1F06F908008D061B /* GainBoyTests */,
 				B2AAB2651F06F908008D061B /* GainBoyUITests */,
@@ -159,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				B2D9DFAA1F0EE4650055DCA7 /* AddSetButton.swift */,
+				B2B4B15D1F86F0A100A518FF /* EntryDetailsViewController.swift */,
 				B2AAB27C1F071A6C008D061B /* Adventure.swift */,
 				B2AAB2801F072138008D061B /* AdventureLogDataSource.swift */,
 				B2AAB2761F070EEE008D061B /* AdventureLogViewController.swift */,
@@ -286,6 +295,8 @@
 			files = (
 				B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */,
 				B2AAB2511F06F907008D061B /* LaunchScreen.storyboard in Resources */,
+				B27CC8E81F8C2229009B7274 /* Cochin.ttc in Resources */,
+				B2B4B1611F87337600A518FF /* Media.xcassets in Resources */,
 				B2AAB24E1F06F907008D061B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +329,7 @@
 				B2AAB2471F06F907008D061B /* AppDelegate.swift in Sources */,
 				B2D9DFAB1F0EE4650055DCA7 /* AddSetButton.swift in Sources */,
 				B2AAB27D1F071A6C008D061B /* Adventure.swift in Sources */,
+				B2B4B15E1F86F0A100A518FF /* EntryDetailsViewController.swift in Sources */,
 				B2D9DFA91F0EBCB10055DCA7 /* FontExtensions.swift in Sources */,
 				B2B90B731F074DA300213DBB /* LogEntryInfoViewControllerDelegate.swift in Sources */,
 				B2AAB27F1F071C2F008D061B /* Exercise.swift in Sources */,

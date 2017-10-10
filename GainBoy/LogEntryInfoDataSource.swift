@@ -58,7 +58,7 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelega
             
             cell.weightTextField.text = String(exercises[indexPath.section].weights[indexPath.row])
             cell.weightTextField.placeholder = "0"
-            cell.weightTextField.tag = (indexPath.row + indexPath.section * 100)
+            cell.weightTextField.tag = -(indexPath.row + indexPath.section * 100) - 1
 //
 //            print("Reps tag number: \(cell.repsTextField.tag)")
 //            print("Weight tag number: \(cell.weightTextField.tag)")
@@ -66,9 +66,13 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelega
             if !currentlyEditing {
                 cell.repsTextField.isUserInteractionEnabled = false
                 cell.repsTextField.borderStyle = .none
+                cell.weightTextField.isUserInteractionEnabled = false
+                cell.weightTextField.borderStyle = .none
             } else {
                 cell.repsTextField.isUserInteractionEnabled = true
                 cell.repsTextField.borderStyle = .roundedRect
+                cell.weightTextField.isUserInteractionEnabled = true
+                cell.weightTextField.borderStyle = .roundedRect
             }
             return cell
         }

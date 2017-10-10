@@ -26,6 +26,8 @@ class AdventureLogDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogEntryTableViewCell", for: indexPath)
         print("successfully added Adventure to log")
         let adventure = adventures[indexPath.row]
+        
+        cell.textLabel?.font = UILabel.appearance().font.withSize(CGFloat(20))
         cell.textLabel?.text = dateFormatter.string(from: adventure.date)
         cell.detailTextLabel?.text = adventure.title
         
