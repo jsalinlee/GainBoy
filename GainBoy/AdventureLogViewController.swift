@@ -11,10 +11,8 @@ import UIKit
 class AdventureLogViewController: UITableViewController, LogEntryInfoViewControllerDelegate {
     let adventureLogDataSource = AdventureLogDataSource()
     var selectedLogIndex = Int()
-    var duplicateLog = Bool()
     
     override func viewDidLoad() {
-        duplicateLog = false;
         super .viewDidLoad()
         
         tableView.dataSource = adventureLogDataSource
@@ -69,10 +67,9 @@ class AdventureLogViewController: UITableViewController, LogEntryInfoViewControl
             editedLog.date = date
             editedLog.time = time
             editedLog.exercises = exercises
-        } else if !(duplicateLog) {
+        } else {
             let newAdventure = Adventure(title: title, date: date, time: time, exercises: exercises)
             adventureLogDataSource.adventures.append(newAdventure)
-            duplicateLog = true;
         }
         tableView.reloadData()
     }
