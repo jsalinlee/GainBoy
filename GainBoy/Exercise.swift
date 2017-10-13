@@ -10,13 +10,11 @@ import UIKit
 
 class Exercise: NSObject {
     var name: String
-    var reps: [Int]
-    var weights: [Double]
+    var sets: [[Int]]
     
-    init(name: String, reps: [Int], weights: [Double]) {
+    init(name: String, sets: [[Int]]) {
         self.name = name
-        self.reps = reps
-        self.weights = weights
+        self.sets = sets
         
         super.init()
     }

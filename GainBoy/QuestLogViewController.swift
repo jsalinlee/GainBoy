@@ -1,5 +1,5 @@
 //
-//  AdventureLogViewController.swift
+//  QuestLogViewController.swift
 //  GainBoy
 //
 //  Created by Jonathan Salin Lee on 6/30/17.
@@ -8,14 +8,17 @@
 
 import UIKit
 
-class AdventureLogViewController: UITableViewController, LogEntryInfoViewControllerDelegate {
-    let adventureLogDataSource = AdventureLogDataSource()
+class QuestLogViewController: UITableViewController, LogEntryInfoViewControllerDelegate {
+    let questLogDataSource = QuestLogDataSource()
     var selectedLogIndex = Int()
+    var backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
     
     override func viewDidLoad() {
         super .viewDidLoad()
         
-        tableView.dataSource = adventureLogDataSource
+        tableView.dataSource = questLogDataSource
+        self.view.backgroundColor = backgroundColor
+        self.tableView.backgroundColor = backgroundColor
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -35,8 +38,10 @@ class AdventureLogViewController: UITableViewController, LogEntryInfoViewControl
             
             let indexPath = sender as! IndexPath
             logEntryInfoViewController.indexPath = indexPath
-            logEntryInfoViewController.title = adventureLogDataSource.dateFormatter.string(from: adventureLogDataSource.adventures[indexPath.row].date)
-            let existingLog = adventureLogDataSource.adventures[indexPath.row]
+            logEntryInfoViewController.title = "Journal"
+                
+//                questLogDataSource.dateFormatter.string(from: questLogDataSource.quests[indexPath.row].date)
+            let existingLog = questLogDataSource.quests[indexPath.row]
             
             logEntryInfoViewController.logEntry = existingLog
             logEntryInfoViewController.logTitle = existingLog.title
@@ -50,7 +55,7 @@ class AdventureLogViewController: UITableViewController, LogEntryInfoViewControl
             logEntryInfoViewController.navigationItem.leftBarButtonItem?.title = "Cancel"
             
             let currentDate = Date.init()
-            logEntryInfoViewController.title = adventureLogDataSource.dateFormatter.string(from: currentDate)
+            logEntryInfoViewController.title = "Journal"
             logEntryInfoViewController.date = currentDate
             logEntryInfoViewController.time = currentDate
         }
@@ -60,16 +65,16 @@ class AdventureLogViewController: UITableViewController, LogEntryInfoViewControl
         dismiss(animated: true, completion: nil)
     }
     
-    func addAdventure(by controller: LogEntryInfoViewController, t title: String, d date: Date, time: Date, e exercises: [Exercise], indexPath: IndexPath?) {
+    func addQuest(by controller: LogEntryInfoViewController, t title: String, d date: Date, time: Date, e exercises: [Exercise], indexPath: IndexPath?) {
         if let indexPath = indexPath {
-            let editedLog = adventureLogDataSource.adventures[indexPath.row]
+            let editedLog = questLogDataSource.quests[indexPath.row]
             editedLog.title = title
             editedLog.date = date
             editedLog.time = time
             editedLog.exercises = exercises
         } else {
-            let newAdventure = Adventure(title: title, date: date, time: time, exercises: exercises)
-            adventureLogDataSource.adventures.append(newAdventure)
+            let newQuest = Quest(title: title, date: date, time: time, exercises: exercises)
+            questLogDataSource.quests.append(newQuest)
         }
         tableView.reloadData()
     }

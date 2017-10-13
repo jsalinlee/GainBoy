@@ -10,5 +10,5 @@ import UIKit
 
 protocol LogEntryInfoViewControllerDelegate: class {
     func cancelButtonPressed(by controller: LogEntryInfoViewController)
-    func addAdventure(by controller: LogEntryInfoViewController, t title: String, d date: Date, time: Date, e exercises: [Exercise], indexPath: IndexPath?)
+    func addQuest(by controller: LogEntryInfoViewController, t title: String, d date: Date, time: Date, e exercises: [Exercise], indexPath: IndexPath?)
 }

@@ -26,9 +26,12 @@ class MainMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UILabel.appearance().substituteFontName = "Cochin"
-        UITextView.appearance().substituteFontName = "Cochin"
-        UITextField.appearance().substituteFontName = "Cochin"
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+//        UILabel.appearance().substituteFontName = "Cochin"
+        UILabel.appearance(whenContainedInInstancesOf: [UITextField.self]).textColor = UIColor(red: 43 / 255, green: 63 / 255, blue: 106 / 255, alpha: 0.4)
+//        UITextView.appearance().substituteFontName = "Cochin"
+//        UITextField.appearance().substituteFontName = "Cochin"
         
         menuButtonFormatting(menuButton: questLogButton)
         menuButtonFormatting(menuButton: exercisesButton)
@@ -63,7 +66,7 @@ class MainMenuViewController: UIViewController {
         let titleSize = menuButton.titleLabel?.frame.size
         let imageSize = menuButton.imageView?.frame.size
         
-        menuButton.titleEdgeInsets = UIEdgeInsetsMake((buttonSize.height / 1.75), -(imageSize?.width)! + ((buttonSize.width - (titleSize?.width)!) / 2), 0.0, 0.0)
+        menuButton.titleEdgeInsets = UIEdgeInsetsMake((buttonSize.height / 1.75) + 5, -(imageSize?.width)! + ((buttonSize.width - (titleSize?.width)!) / 2), 0.0, 0.0)
         menuButton.imageEdgeInsets = UIEdgeInsetsMake((buttonSize.height / 5), ((buttonSize.width - (imageSize?.width)!) / 2), 0.0, 0.0)
     }
 }

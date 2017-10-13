@@ -1,5 +1,5 @@
 //
-//  Adventure.swift
+//  Quest.swift
 //  GainBoy
 //
 //  Created by Jonathan Salin Lee on 6/30/17.
@@ -8,11 +8,13 @@
 
 import UIKit
 
-class Adventure: NSObject {
+class Quest: NSObject {
     var title: String
     var date: Date
     var time: Date
     var exercises: [Exercise]
+//    var weight: Double
+//    var notes: String
     var id: String?
     
     init(title: String, date: Date, time: Date, exercises: [Exercise]) {

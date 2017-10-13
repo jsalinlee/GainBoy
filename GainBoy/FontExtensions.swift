@@ -53,6 +53,7 @@ extension UITextView {
             }
             let fontSize = self.font?.pointSize ?? 17
             self.font = UIFont(name: fontName, size: fontSize)
+            self.textColor = UIColor(red: 43 / 255, green: 63 / 255, blue: 106 / 255, alpha: 1)
         }
     }
 }
@@ -76,6 +77,7 @@ extension UITextField {
             }
             let fontSize = self.font?.pointSize ?? 17
             self.font = UIFont(name: fontName, size: fontSize)
+            self.textColor = UIColor(red: 43 / 255, green: 63 / 255, blue: 106 / 255, alpha: 1)
         }
     }
 }

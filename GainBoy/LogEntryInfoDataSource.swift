@@ -21,8 +21,6 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelega
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let exercise = exercises[section]
-//        return exercise.name
         for i in 0..<exercises.count {
             if section == i {
                 return exercises[i].name
@@ -34,7 +32,7 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         for i in 0..<exercises.count {
             if section == i {
-                return exercises[i].reps.count
+                return exercises[i].sets.count
             }
         }
         if section == exercises.count {
@@ -47,16 +45,18 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelega
         
         if indexPath.section >= exercises.count && currentlyEditing == true {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addExerciseTableViewCell", for: indexPath)
+            cell.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "setTableViewCell", for: indexPath) as! SetTableViewCell
+            cell.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
             cell.setNumber.text = "Set #\(String(indexPath.row + 1))"
             
-            cell.repsTextField.text = String(exercises[indexPath.section].reps[indexPath.row])
+            cell.repsTextField.text = String(describing: exercises[indexPath.section].sets[indexPath.row][0])
             cell.repsTextField.placeholder = "0"
             cell.repsTextField.tag = (indexPath.row + indexPath.section * 100) + 2
             
-            cell.weightTextField.text = String(exercises[indexPath.section].weights[indexPath.row])
+            cell.weightTextField.text = String(exercises[indexPath.section].sets[indexPath.row][1])
             cell.weightTextField.placeholder = "0"
             cell.weightTextField.tag = -(indexPath.row + indexPath.section * 100) - 1
 //
@@ -77,4 +77,18 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelega
             return cell
         }
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        for i in 0..<exercises.count {
+            if(indexPath.section == i) {
+                exercises[i].sets.remove(at: indexPath.row)
+//                tableView.deleteRows(at: [indexPath], with: .automatic)
+                if(exercises[i].sets.count <= 0) {
+                    exercises.remove(at: i)
+                    tableView.deleteSections([i], with: .automatic)
+                }
+            }
+        }
+    }
+    
 }

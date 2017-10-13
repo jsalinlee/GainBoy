@@ -16,24 +16,22 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var timeTextField: UITextField!
-    @IBOutlet var weightTextField: UITextField!
-    @IBOutlet var lengthTextField: UITextField!
     @IBOutlet var dateTextField: UITextField!
     @IBOutlet var allTextFields: [UITextField]!
-    @IBOutlet var journalLabel: UILabel!
     
     @IBOutlet var activeText: UITextField!
     @IBOutlet var tableView: UITableView!
     
     // MARK: - Logistical Variables
     
+    var backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
     var logTitle = String()
     var date = Date()
     var time = Date()
     var weight = Double()
-    var logEntry: Adventure!
+    var logEntry: Quest!
     var indexPath: IndexPath?
-    weak var delegate: AdventureLogViewController?
+    weak var delegate: QuestLogViewController?
     let logEntryInfoDataSource = LogEntryInfoDataSource()
     var exercises: [Exercise] = []
     
@@ -41,9 +39,9 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     
     let numberFormatter: NumberFormatter = {
         let nf = NumberFormatter()
-        nf.numberStyle = .decimal
-        nf.minimumFractionDigits = 0
-        nf.maximumFractionDigits = 1
+        nf.numberStyle = .none
+//        nf.minimumFractionDigits = 0
+//        nf.maximumFractionDigits = 1
         return nf;
     }()
     
@@ -66,14 +64,8 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        
-        journalLabel.font = UILabel.appearance().font.withSize(CGFloat(26))
-//        let fontFamilyNames = UIFont.familyNames
-//        for familyName in fontFamilyNames {
-//            print("Font Family Name: \(familyName)")
-//            let name = UIFont.fontNames(forFamilyName: familyName)
-//            print("Font name: \(name)")
-//        }
+        self.view.backgroundColor = backgroundColor
+        self.tableView.backgroundColor = backgroundColor
         
         if navigationItem.rightBarButtonItem?.title == "Done" {
             for textField in allTextFields {
@@ -96,8 +88,6 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
         dateTextField.text = dateFormatter.string(from: date)
         timeTextField.inputView = datePicker
         timeTextField.text = timeFormatter.string(from: time)
-        journalLabel.attributedText = NSAttributedString(string: "Journal", attributes:
-            [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
         
         tableView.dataSource = logEntryInfoDataSource
         logEntryInfoDataSource.exercises = exercises
@@ -158,8 +148,7 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
     @objc func addSetButtonPressed(_ sender: AddSetButton) {
         print("Successfully requested to add a set")
         let exerciseIndex = sender.section
-        logEntryInfoDataSource.exercises[exerciseIndex].reps.append(0)
-        logEntryInfoDataSource.exercises[exerciseIndex].weights.append(0)
+        logEntryInfoDataSource.exercises[exerciseIndex].sets.append([0, 0])
         tableView.reloadData()
     }
     
@@ -174,7 +163,7 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
             
             let timeLog = timeFormatter.date(from: timeTextField.text!)
             let dateLog = dateFormatter.date(from: dateTextField.text!)
-            delegate?.addAdventure(by: self, t: titleTextField.text!, d: dateLog!, time: timeLog!, e: logEntryInfoDataSource.exercises, indexPath: indexPath)
+            delegate?.addQuest(by: self, t: titleTextField.text!, d: dateLog!, time: timeLog!, e: logEntryInfoDataSource.exercises, indexPath: indexPath)
             
             self.navigationItem.rightBarButtonItem?.title = "Edit"
             self.navigationItem.leftBarButtonItem?.title = "Back"
@@ -245,7 +234,7 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
             if let exerciseName = alertController.textFields?.first?.text {
                 if exerciseName != "" {
-                    let newExercise = Exercise(name: exerciseName, reps: [0], weights: [0])
+                    let newExercise = Exercise(name: exerciseName, sets: [[0,0]])
                     self.logEntryInfoDataSource.exercises.append(newExercise)
                     print("Successfully entered a new exercise.")
                     
@@ -292,16 +281,15 @@ class LogEntryInfoViewController: UIViewController, UITableViewDelegate, UITextF
             return
         }
         for i in 0..<exercises.count {
-            let reps = logEntryInfoDataSource.exercises[i].reps
-//            let weights = logEntryInfoDataSource.exercises[i].weights
-            for j in 0..<reps.count {
+            let sets = logEntryInfoDataSource.exercises[i].sets
+            for j in 0..<sets.count {
                 if textField.tag == (j + i * 100) + 2 {
-                    logEntryInfoDataSource.exercises[i].reps[j] = Int(textField.text!)!
+                    logEntryInfoDataSource.exercises[i].sets[j][0] = Int(textField.text!)!
                     return
                 }
                 if textField.tag == -(j + i * 100) - 1 {
                     let weight = numberFormatter.number(from: textField.text!)
-                    logEntryInfoDataSource.exercises[i].weights[j] = (weight?.doubleValue)!
+                    logEntryInfoDataSource.exercises[i].sets[j][1] = Int(truncating: weight!)
                     return
                 }
             }
