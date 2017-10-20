@@ -79,16 +79,13 @@ class LogEntryInfoDataSource: NSObject, UITableViewDataSource, UITextFieldDelega
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        for i in 0..<exercises.count {
-            if(indexPath.section == i) {
-                exercises[i].sets.remove(at: indexPath.row)
-//                tableView.deleteRows(at: [indexPath], with: .automatic)
-                if(exercises[i].sets.count <= 0) {
-                    exercises.remove(at: i)
-                    tableView.deleteSections([i], with: .automatic)
-                }
-            }
+        exercises[indexPath.section].sets.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        if(exercises[indexPath.section].sets.count <= 0) {
+            exercises.remove(at: indexPath.section)
+            tableView.deleteSections([indexPath.section], with: .automatic)
         }
+        tableView.reloadData()
     }
     
 }

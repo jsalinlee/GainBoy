@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "adventure-log-icon-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "barBlue_horizontalLeft.png",
       "scale" : "2x"
     },
     {

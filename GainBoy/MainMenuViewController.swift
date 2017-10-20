@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class MainMenuViewController: UIViewController {
     @IBOutlet var profilePicture: UIImageView!
@@ -24,6 +25,8 @@ class MainMenuViewController: UIViewController {
     @IBOutlet var rewardsButton: UIButton!
     @IBOutlet var statsButton: UIButton!
     
+    @IBOutlet var statusSKView: SKView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,10 +36,6 @@ class MainMenuViewController: UIViewController {
 //        UITextView.appearance().substituteFontName = "Cochin"
 //        UITextField.appearance().substituteFontName = "Cochin"
         
-        menuButtonFormatting(menuButton: questLogButton)
-        menuButtonFormatting(menuButton: exercisesButton)
-        menuButtonFormatting(menuButton: statsButton)
-        menuButtonFormatting(menuButton: rewardsButton)
 //        func printFonts() {
 //            let fontFamilyNames = UIFont.familyNames
 //            for familyName in fontFamilyNames {
@@ -47,6 +46,10 @@ class MainMenuViewController: UIViewController {
 //            }
 //        }
 //        printFonts()
+        var statusScene = MainMenuStatusScene()
+        
+        statusScene.scaleMode = .resizeFill
+        statusSKView.presentScene(statusScene)
 
     }
     

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B27CC8E81F8C2229009B7274 /* Cochin.ttc in Resources */ = {isa = PBXBuildFile; fileRef = B27CC8E71F8C2228009B7274 /* Cochin.ttc */; };
+		B240BBB81F9863A900907C7D /* MainMenuStatusScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B240BBB71F9863A900907C7D /* MainMenuStatusScene.swift */; };
 		B2843AC31F0AE5D20013C09E /* LogEntryInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */; };
 		B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */; };
 		B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2843ACD1F0EA5B20013C09E /* Main.storyboard */; };
@@ -47,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B27CC8E71F8C2228009B7274 /* Cochin.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cochin.ttc; sourceTree = "<group>"; };
+		B240BBB71F9863A900907C7D /* MainMenuStatusScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuStatusScene.swift; sourceTree = "<group>"; };
 		B2843AC21F0AE5D20013C09E /* LogEntryInfoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryInfoDataSource.swift; sourceTree = "<group>"; };
 		B2843AC61F0AEAA30013C09E /* SetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
 		B2843ACD1F0EA5B20013C09E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -127,7 +127,6 @@
 		B2843ACA1F0EA3610013C09E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B27CC8E71F8C2228009B7274 /* Cochin.ttc */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -162,6 +161,7 @@
 				B2C639531F5743150088FC35 /* QuestLog */,
 				B2D9DFA81F0EBCB10055DCA7 /* FontExtensions.swift */,
 				B2AAB2741F06FA22008D061B /* MainMenuViewController.swift */,
+				B240BBB71F9863A900907C7D /* MainMenuStatusScene.swift */,
 				B2AAB24D1F06F907008D061B /* Assets.xcassets */,
 				B2AAB24F1F06F907008D061B /* LaunchScreen.storyboard */,
 				B2843ACD1F0EA5B20013C09E /* Main.storyboard */,
@@ -311,7 +311,6 @@
 			files = (
 				B2843ACE1F0EA5B20013C09E /* Main.storyboard in Resources */,
 				B2AAB2511F06F907008D061B /* LaunchScreen.storyboard in Resources */,
-				B27CC8E81F8C2229009B7274 /* Cochin.ttc in Resources */,
 				B2B4B1611F87337600A518FF /* Media.xcassets in Resources */,
 				B2AAB24E1F06F907008D061B /* Assets.xcassets in Resources */,
 			);
@@ -338,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B240BBB81F9863A900907C7D /* MainMenuStatusScene.swift in Sources */,
 				B2AAB2791F0717ED008D061B /* LogEntryInfoViewController.swift in Sources */,
 				B2AAB2751F06FA22008D061B /* MainMenuViewController.swift in Sources */,
 				B2843AC71F0AEAA30013C09E /* SetTableViewCell.swift in Sources */,
